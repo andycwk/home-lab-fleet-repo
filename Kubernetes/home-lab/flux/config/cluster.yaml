@@ -1,0 +1,44 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: home-lab-fleet-repo
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: ssh://git@github.com/andycwk/home-lab-fleet-repo
+  ref:
+    branch: main
+  secretRef:
+    name: github-deploy-key
+  ignore: |
+    # exclude all
+    /*
+    # include kubernetes directory
+    !/kubernetes/home-lab
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: home-lab-cluster
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./Kubernetes/home-lab/flux
+  prune: false
+  wait: false
+  sourceRef:
+    kind: GitRepository
+    name: home-lab-fleet-repo
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings
+        optional: false
+      - kind: Secret
+        name: cluster-secrets
+        optional: false
