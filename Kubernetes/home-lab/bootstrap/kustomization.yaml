@@ -5,3 +5,4 @@ resources:
   - github.com/fluxcd/flux2/manifests/install?ref=v2.0.1
   - age-key.sops.yaml
   - ./vars
+  - ../flux/config
