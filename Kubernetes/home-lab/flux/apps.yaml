@@ -8,7 +8,7 @@ spec:
   # dependsOn:
   #   - name: cluster-infrastructure
   interval: 30m
-  path: ./kubernetes/home-lab/apps
+  path: ./Kubernetes/home-lab/apps
   prune: false
   sourceRef:
     kind: GitRepository
