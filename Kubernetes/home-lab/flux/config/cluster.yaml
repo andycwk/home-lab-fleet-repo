@@ -11,11 +11,6 @@ spec:
     branch: main
   secretRef:
     name: gh-ssh-credentials
-  ignore: |
-    # exclude all
-    /*
-    # include kubernetes directory
-    !/Kubernetes/home-lab
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -24,7 +19,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./Kubernetes/home-lab/flux
+  path: ./flux
   prune: false
   wait: false
   sourceRef:
