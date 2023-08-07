@@ -1,12 +1,12 @@
 ---
 creation_rules:
-  - path_regex: .*.yaml
-    encrypted_regex: '^(data|stringData)$'
-    key_groups:
-      - age:
-          - age15d29xvesmwptv0rxzj3xzrpg73hqc00m5elu403j6p830uer2ars74s559
+  - path_regex: .*\.sops\.yaml
+    encrypted_regex: "^(data|stringData)$"
+    age: >-
+      age15d29xvesmwptv0rxzj3xzrpg73hqc00m5elu403j6p830uer2ars74s559
 
   - encrypted_regex: '^(data|stringData)$'
-    key_groups:
-      - age:
-          - age15d29xvesmwptv0rxzj3xzrpg73hqc00m5elu403j6p830uer2ars74s559          
+    age: >-
+      age15d29xvesmwptv0rxzj3xzrpg73hqc00m5elu403j6p830uer2ars74s559
+
+
