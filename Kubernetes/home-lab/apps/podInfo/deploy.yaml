@@ -48,6 +48,11 @@ spec:
         env:
         - name: PODINFO_UI_COLOR
           value: "#34577c"
+        - name: SECRET_USER
+          valueFrom:
+            secretKeyRef:
+              name: cluster-secrets
+              key: user 
         livenessProbe:
           exec:
             command:
