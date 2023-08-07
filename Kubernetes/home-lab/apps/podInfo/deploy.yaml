@@ -50,7 +50,7 @@ spec:
         - name: SECRET_USER
           valueFrom:
             secretKeyRef:
-              name: secrets
+              name: podinfo-secrets
               key: user 
         livenessProbe:
           exec:
