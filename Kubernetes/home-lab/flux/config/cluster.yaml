@@ -24,7 +24,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./Kubernetes/home-lab/flux
+  path: ./kubernetes/home-lab/flux
   prune: false
   wait: false
   sourceRef:
