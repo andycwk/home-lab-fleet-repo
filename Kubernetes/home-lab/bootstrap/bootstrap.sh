@@ -8,4 +8,6 @@ kubectl apply -f /dev/stdin
 sops -d ./bootstrap/gh-ssh-credentials.sops.yaml |
 kubectl apply -f /dev/stdin
 
+kubectl apply -k ./flux/vars --validate=false
+
 kubectl apply -k ./bootstrap/flux --validate=false
