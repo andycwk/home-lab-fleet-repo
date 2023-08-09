@@ -3,9 +3,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: akv2k8s
-  namespace: akv2k8s
+  namespace: flux-system
 spec:
   interval: 15m
+  targetNamespace: akv2k8s
   chart:
     spec:
       chart: spv-charts/akv2k8s
