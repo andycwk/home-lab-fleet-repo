@@ -7,4 +7,4 @@ for FILE in ./flux/vars/*.sops.yaml; do
         kubectl apply -f -
 done
 
-kubectl apply -k ./bootstrap/flux --validate=false
+kubectl apply -k ./flux/config
