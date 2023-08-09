@@ -9,7 +9,7 @@ spec:
   targetNamespace: akv2k8s
   chart:
     spec:
-      chart: spv-charts/akv2k8s
+      chart: akv2k8s
       version: 2.5.0
       sourceRef:
         kind: HelmRepository
