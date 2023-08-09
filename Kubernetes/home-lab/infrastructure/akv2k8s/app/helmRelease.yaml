@@ -5,7 +5,6 @@ metadata:
   name: akv2k8s
 spec:
   interval: 15m
-  targetNamespace: akv2k8s
   chart:
     spec:
       chart: akv2k8s
