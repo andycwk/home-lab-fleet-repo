@@ -7,3 +7,4 @@ resources:
   - ./secrets.sops.yaml
   - ./deploy.yaml
   - ./akvs-secret-sync.yaml
+
