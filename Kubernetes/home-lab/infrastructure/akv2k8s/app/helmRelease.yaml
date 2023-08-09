@@ -29,9 +29,25 @@ spec:
   values:
     global:
       keyVaultAuth: environment
-      env:
-        AZURE_TENANT_ID: xyz
-        AZURE_CLIENT_ID: id_xyz
-        AZURE_CLIENT_SECRET: sec_xy
+      # env:
+      #   AZURE_TENANT_ID: 
+      #   AZURE_CLIENT_ID: id_xyz
+      #   AZURE_CLIENT_SECRET: sec_xy
     env_injector:
       keyVaultAuth: environment
+  valuesFrom:
+      - kind: Secret
+        name: az-kv-sp
+        valuesKey: tenant_id
+        targetPath: global.env.AZURE_TENANT_ID
+        optional: false    
+      - kind: Secret
+        name: az-kv-sp
+        valuesKey: client_id
+        targetPath: global.env.AZURE_CLIENT_ID
+        optional: false 
+      - kind: Secret
+        name: az-kv-sp
+        valuesKey: client_secret
+        targetPath: global.env.AZURE_CLIENT_SECRET
+        optional: false                 
