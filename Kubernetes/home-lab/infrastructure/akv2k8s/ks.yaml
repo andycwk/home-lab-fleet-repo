@@ -1,9 +1,9 @@
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
-namespace: flux-system
 metadata:
   name: akv2k8s
+  namespace: flux-system
 spec:
   path: ./Kubernetes/home-lab/infrastructure/akv2k8s/app
   prune: true
