@@ -1,13 +1,10 @@
-#!/usr/bin/env bash
+!/usr/bin/env bash
 
 kubectl apply -k ./bootstrap --validate=false
 
-sops -d ./bootstrap/age-key.sops.yaml |
-kubectl apply -f /dev/stdin
-
-sops -d ./bootstrap/gh-ssh-credentials.sops.yaml |
-kubectl apply -f /dev/stdin
-
-kubectl apply -k ./flux/vars --validate=false
+for FILE in ./flux/vars/*.sops.yaml; do
+    sops -d $FILE |
+        kubectl apply -f -
+done
 
 kubectl apply -k ./bootstrap/flux --validate=false
