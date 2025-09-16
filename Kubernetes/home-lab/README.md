@@ -7,3 +7,4 @@ Simply run `./bootstrap/bootstrap.sh` from the same folder as this note.
 I've designed the structure of the fleet repo so Flux will install updates to the initial secrets once the bootstrap has been completed.
 
 
+https://getsops.io/
