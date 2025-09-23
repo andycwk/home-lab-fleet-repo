@@ -35,7 +35,7 @@ flux bootstrap github \
   --owner=$GITHUB_USER \
   --repository=home-lab-fleet-repo \
   --branch=main \
-  --path=./Kubernetes/India-ARC/flux \
+  --path=./Kubernetes/India-ARC/flux/flux-system \
   --personal
 
 # flux bootstrap github \
