@@ -21,16 +21,15 @@ if [ ! $GITHUB_TOKEN ]; then
     exit 1
 fi
 
-secret=~/.ssh/flux-system_home-lab.yaml
+secret=~/.ssh/flux-system_home-labx.yaml
 if [ ! -f $secret ]; then
     echo "flux-system secret not found, please ensure you have $secret" >>/dev/stderr
-    exit 1
+    echo "... will bootstrap with new deployment keys" >> /dev/stderr
+else
+    echo "existing flux-system secret found.. Sending to cluster"
+    kubectl apply -k ./flux/config >>/dev/null
+    kubectl apply -f $secret >>/dev/null
 fi
-
-
-echo "Sending flux-system secret to cluster"
-kubectl apply -k ./flux/config >>/dev/null
-kubectl apply -f $secret >>/dev/null
 
 flux bootstrap github \
   --owner=$GITHUB_USER \
