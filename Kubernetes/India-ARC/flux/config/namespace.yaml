@@ -14,4 +14,4 @@ metadata:
     app.kubernetes.io/instance: test-theory
     app.kubernetes.io/part-of: flux
     app.kubernetes.io/version: v0.15.3
-  name: flux-system
+  name: flux-system-d
