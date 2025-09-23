@@ -31,11 +31,12 @@ fi
 
 # pushd ./clusters/bootstrap/taro-dev >>/dev/null
 
-# echo "Sending flux-system secret to cluster"
+echo "Sending flux-system secret to cluster"
 # kubectl apply -f ./bootstrap >>/dev/null
-# kubectl apply -f $secret >>/dev/null
+kubectl apply -f $secret >>/dev/null
 
 # popd >>/dev/null
+
 # echo "Setting up initial sealed secret details for dev"
 # kubectl -n flux-system create secret tls selaed-secret-keys --cert=$sealedSecretCrt --key=$sealedSecretKey
 # kubectl -n flux-system label secret selaed-secret-keys sealedsecrets.bitnami.com/sealed-secrets-key=active
