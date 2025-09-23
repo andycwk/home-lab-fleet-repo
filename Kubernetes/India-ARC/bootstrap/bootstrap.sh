@@ -5,7 +5,6 @@ if ! command -v flux &>/dev/null; then
     exit 1
 fi
 
-# clusterRoot=./Kubernetes/taro-dev/
 # sealedSecretCrt=eHubTaroDevSealedSecret.crt
 # sealedSecretKey=~/.ssh/eHubTaroDevSealedSecret.key
 # if [ ! -f $sealedSecretCrt ]; then
@@ -29,18 +28,9 @@ if [ ! -f $secret ]; then
 fi
 
 
-# pushd ./clusters/bootstrap/taro-dev >>/dev/null
-
 echo "Sending flux-system secret to cluster"
-# kubectl apply -f ./bootstrap >>/dev/null
+kubectl apply -k ./flux/config >>/dev/null
 kubectl apply -f $secret >>/dev/null
-
-# popd >>/dev/null
-
-# echo "Setting up initial sealed secret details for dev"
-# kubectl -n flux-system create secret tls selaed-secret-keys --cert=$sealedSecretCrt --key=$sealedSecretKey
-# kubectl -n flux-system label secret selaed-secret-keys sealedsecrets.bitnami.com/sealed-secrets-key=active
-# pushd ./clusters/bootstrap/taro-dev >>/dev/null
 
 flux bootstrap github \
   --owner=$GITHUB_USER \
