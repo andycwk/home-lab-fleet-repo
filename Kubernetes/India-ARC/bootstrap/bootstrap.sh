@@ -22,11 +22,11 @@ if [ ! $GITHUB_TOKEN ]; then
     exit 1
 fi
 
-# secret=~/.ssh/flux-system_taro-dev.yaml
-# if [ ! -f $secret ]; then
-#     echo "flux-system secret not found, please ensure you have $secret" >>/dev/stderr
-#     exit 1
-# fi
+secret=~/.ssh/flux-system_home-lab.yaml
+if [ ! -f $secret ]; then
+    echo "flux-system secret not found, please ensure you have $secret" >>/dev/stderr
+    exit 1
+fi
 
 
 # pushd ./clusters/bootstrap/taro-dev >>/dev/null
