@@ -1,3 +1,4 @@
 apiVersion: v1
 kind: Namespace
-name: flux-system-d
+metadata:
+  name: yummy-namespace
