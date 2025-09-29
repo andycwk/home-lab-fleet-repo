@@ -5,3 +5,4 @@ resources:
   - namespace.yaml
   - age-key.sops.yaml
   - cluster-secrets.sops.yaml
+  - apps.yaml
