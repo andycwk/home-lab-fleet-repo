@@ -24,8 +24,6 @@ function validate-CLI(){
         echo "1Password CLI was not found, please install https://developer.1password.com/docs/cli/get-started/" >>/dev/stderr
         exit 1
     fi
-
-
 }
 
 function prepare-cluster(){
