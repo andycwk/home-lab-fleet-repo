@@ -3,7 +3,7 @@
 function inject_secrets(){
   local -r file="./cluster.yaml.j2"
   local output
-  
+  pwd
   pushd ./Kubernetes/India-ARC/bootstrap >>/dev/null
   if [[ ! -f "${file}" ]]; then
       echo "File does not exist" "file=${file}"
