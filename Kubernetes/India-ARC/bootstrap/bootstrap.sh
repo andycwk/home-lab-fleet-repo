@@ -17,7 +17,7 @@ function inject_secrets(){
   fi
   popd >>/dev/null
   echo "${output}"
-  echo "${output}" | kubectl apply --server-side --filename - &>/dev/null
+  echo "${output}" | kubectl apply --server-side --filename -
 }
 
 function main(){
