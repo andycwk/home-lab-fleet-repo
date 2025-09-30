@@ -53,7 +53,7 @@ spec:
               name: podinfo-secrets
               key: user 
         - name: CLUSTER_SECRET_USER
-          value: "${user}"              
+          value: "${userb}"              
         livenessProbe:
           exec:
             command:
