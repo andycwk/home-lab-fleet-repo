@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+function main(){
+    validate-CLI
+    prepare-cluster
+    bootstrap-flux
+
+    echo "==============================================================="
+    echo "Cluster bootstrap now complete and in sync with this fleet repo"
+    echo "==============================================================="
+}
+
 function validate-CLI(){
     echo "======================"
     echo "validating CLI tooling"
@@ -79,16 +89,6 @@ function bootstrap-flux(){
     #     --repository=fleet-infra \
     #     --branch=main \
     #     --path=./clusters/taro-dev
-}
-
-function main(){
-    validate-CLI
-    prepare-cluster
-    bootstrap-flux
-
-    echo "==============================================================="
-    echo "Cluster bootstrap now complete and in sync with this fleet repo"
-    echo "==============================================================="
 }
 
 main "$@"
