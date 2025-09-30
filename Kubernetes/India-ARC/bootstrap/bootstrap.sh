@@ -83,7 +83,7 @@ function bootstrap-flux(){
 
 function main(){
     validate-CLI
-    inject-secrets
+    prepare-cluster
     bootstrap-flux
 
     echo "==============================================================="
