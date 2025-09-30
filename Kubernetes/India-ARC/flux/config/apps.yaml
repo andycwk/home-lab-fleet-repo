@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-infrastructure
+    - name: cluster-infra
   interval: 5m
   path: ./Kubernetes/India-ARC/apps
   prune: true
