@@ -45,12 +45,23 @@ function prepare-cluster(){
         exit 1
     fi
 
-    if ! output=$(op inject --in-file "${file}") || [[ -z "${output}" ]]; then
+    IDENTITY_B64="$(op read 'op://kube-CI-CD-TI-IN-cluster/deploy-key/private key' | base64 -b0)"
+    IDENTITY_PUB_B64="$(op read 'op://kube-CI-CD-TI-IN-cluster/deploy-key/public key' | base64 -b0)"
+    export MINIJINJA_CONFIG_FILE=$(pwd)/.minijinja.toml
+    
+    if ! output=$(IDENTITY_B64="$IDENTITY_B64" IDENTITY_PUB_B64="$IDENTITY_PUB_B64" minijinja-cli "${file}" | op inject) || [[ -z "${output}" ]]; then
         popd >>/dev/null
         echo "Failed to render config" "file=${file}"
         exit 1
     fi
     popd >>/dev/null
+
+    # if ! output=$(op inject --in-file "${file}") || [[ -z "${output}" ]]; then
+    #     popd >>/dev/null
+    #     echo "Failed to render config" "file=${file}"
+    #     exit 1
+    # fi
+    # popd >>/dev/null
 
     echo "${output}" | kubectl apply --server-side --filename -
 }
@@ -60,8 +71,8 @@ function bootstrap-flux(){
     echo "Bootstrapping Flux"
     echo "=================="
 
-    local -r GH_TOKEN=$(op read op://kube-ARC-TI-IN-cluster/GITHUB/password)
-    local -r GH_USER=$(op read op://kube-ARC-TI-IN-cluster/GITHUB/username)
+    local -r GH_TOKEN=$(op read "op://kube-CI-CD-TI-IN-cluster/GITHUB/password")
+    local -r GH_USER=$(op read "op://kube-CI-CD-TI-IN-cluster/GITHUB/username")
 
     GITHUB_TOKEN=${GH_TOKEN} flux bootstrap github \
     --owner=$GH_USER \

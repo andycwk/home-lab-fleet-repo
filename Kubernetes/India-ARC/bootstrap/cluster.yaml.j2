@@ -10,4 +10,19 @@ metadata:
   name: sops-age
   namespace: flux-system
 stringData:
-  age.agekey: op://kube-ARC-TI-IN-cluster/sops/SOPS_PRIVATE_KEY
+  age.agekey: op://kube-CI-CD-TI-IN-cluster/sops/private-key
+---
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: flux-system
+  namespace: flux-system
+stringData:
+  known_hosts: github.com "op://kube-CI-CD-TI-IN-cluster/deploy-key/public key"
+data:
+  identity: {{ENV.IDENTITY_B64}}
+  identity.pub: {{ENV.IDENTITY_PUB_B64}}
+
+
+  
