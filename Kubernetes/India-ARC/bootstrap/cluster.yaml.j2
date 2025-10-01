@@ -19,10 +19,10 @@ metadata:
   name: flux-system
   namespace: flux-system
 stringData:
-  known_hosts: github.com "op://kube-CI-CD-TI-IN-cluster/deploy-key/public key"
 data:
   identity: {{ENV.IDENTITY_B64}}
   identity.pub: {{ENV.IDENTITY_PUB_B64}}
+  known_hosts: {{ENV.KNOWN_HOSTS}}
 
 
   

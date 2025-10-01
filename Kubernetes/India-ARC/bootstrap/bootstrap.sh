@@ -45,8 +45,9 @@ function prepare-cluster(){
         exit 1
     fi
 
-    IDENTITY_B64="$(op read 'op://kube-CI-CD-TI-IN-cluster/deploy-key/private key' | base64 -b0)"
-    IDENTITY_PUB_B64="$(op read 'op://kube-CI-CD-TI-IN-cluster/deploy-key/public key' | base64 -b0)"
+    export KNOWN_HOSTS=$( ssh-keyscan github.com | base64 -b0)
+    export IDENTITY_B64="$(op read 'op://kube-CI-CD-TI-IN-cluster/deploy-key/private key' | base64 -b0)"
+    export IDENTITY_PUB_B64="$(op read 'op://kube-CI-CD-TI-IN-cluster/deploy-key/public key' | base64 -b0)"
     export MINIJINJA_CONFIG_FILE=$(pwd)/.minijinja.toml
     
     if ! output=$(IDENTITY_B64="$IDENTITY_B64" IDENTITY_PUB_B64="$IDENTITY_PUB_B64" minijinja-cli "${file}" | op inject) || [[ -z "${output}" ]]; then
